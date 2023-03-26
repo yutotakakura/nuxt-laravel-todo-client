@@ -17,13 +17,13 @@
         <tbody>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    hogehoge
+                    {{ task.title }}
                 </th>
                 <td class="px-6 py-4">
-                    foofoo
+                    {{ task.content }}
                 </td>
                 <td class="px-6 py-4">
-                    barbar
+                    {{ task.person_in_charge }}
                 </td>
             </tr>
         </tbody>
@@ -35,3 +35,8 @@
   </NuxtLink>
   </div>
 </template>
+
+<script setup>
+  const route = useRoute()
+  const { data: task } = await useFetch('http://localhost:80/api/tasks/' + route.params.id)
+</script>
