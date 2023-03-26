@@ -1,4 +1,4 @@
 <template>
-    <nav>ヘッダー</nav>
+    <Header />
     <slot />
-</template>
+  </template>
