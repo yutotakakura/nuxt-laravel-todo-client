@@ -1,0 +1,4 @@
+<template>
+  <h1>タスク編集画面</h1>
+  <p>taskId: {{ $route.params.id }}</p>
+</template>
