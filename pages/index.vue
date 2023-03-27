@@ -50,7 +50,7 @@
                   <NuxtLink 
                     to="/" 
                     class="shadow bg-slate-500 hover:bg-slate-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-                    type="button">削除</NuxtLink>
+                    type="button" @click="deleteTask(task.id)">削除</NuxtLink>
                 </td>
             </tr>
         </tbody>
@@ -59,5 +59,11 @@
 </template>
 
 <script setup>
-  const { data: tasks } = await useFetch('http://localhost:80/api/tasks')
+  const { data: tasks, refresh } = await useFetch('http://localhost:80/api/tasks')
+
+  const deleteTask = (id) => {
+    useFetch('http://localhost:80/api/tasks/' + id, {
+      method: 'DELETE',
+    }).then(res => refresh())
+  };
 </script>
